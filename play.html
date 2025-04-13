@@ -36,25 +36,33 @@
 </head>
 <body>
   <div class="video-container">
-    <video id="player" playsinline controls data-poster="">
-      <source id="videoSource" src="" type="video/mp4" />
-    </video>
+    <video id="player" playsinline controls></video>
   </div>
 
   <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script>
-    // قراءة رابط الفيديو من عنوان الصفحة
+    const video = document.getElementById('player');
     const urlParams = new URLSearchParams(window.location.search);
     const videoUrl = urlParams.get('video');
 
-    // تعيين رابط الفيديو داخل الوسم
     if (videoUrl) {
-      document.getElementById('videoSource').src = videoUrl;
-      document.getElementById('player').load();
+      if (videoUrl.endsWith('.m3u8')) {
+        if (Hls.isSupported()) {
+          const hls = new Hls();
+          hls.loadSource(videoUrl);
+          hls.attachMedia(video);
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = videoUrl;
+        } else {
+          alert('متصفحك لا يدعم تشغيل m3u8');
+        }
+      } else {
+        video.src = videoUrl;
+      }
     }
 
-    // تهيئة المشغل
-    const player = new Plyr('#player');
+    const player = new Plyr(video);
   </script>
 </body>
 </html>
