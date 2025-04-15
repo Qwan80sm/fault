@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>قسم الفيديوهات</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #0f0f0f;
+      color: #fff;
+      direction: rtl;
+      overflow-x: hidden;
+    }
+
+    aside {
+      width: 240px;
+      background: #141414;
+      height: 100vh;
+      padding: 20px;
+      position: fixed;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+      box-shadow: -4px 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    aside.show {
+      transform: translateX(0);
+    }
+
+    .sidebar-title {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: #fff;
+      font-weight: bold;
+      border-right: 4px solid #fff;
+      padding-right: 10px;
+    }
+
+    .menu a {
+      display: block;
+      color: #ccc;
+      text-decoration: none;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .menu a:hover {
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+    }
+
+    .content-wrapper {
+      padding-right: 0;
+      transition: margin-right 0.3s ease;
+    }
+
+    header {
+      background: #141414;
+      padding: 20px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.6);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .menu-btn {
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #fff;
+    }
+
+    .main {
+      padding: 40px 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 20px;
+      border-right: 4px solid #fff;
+      padding-right: 10px;
+    }
+
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #1c1c1c, #121212);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .thumbnail {
+      height: 180px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .info {
+      padding: 16px;
+    }
+
+    .info h3 {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .info p {
+      font-size: 13px;
+      color: #aaa;
+    }
+    
+    .thumbnail {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+} 
+
+  </style>
+</head>
+<body>
+
+  <aside id="sidebar">
+    <div class="sidebar-title">الأقسام</div>
+    <div class="menu">
+      <a href="#">الرئيسية</a>
+      <a href="#">الأكثر مشاهدة</a>
+      <a href="#">أحدث الفيديوهات</a>
+      <a href="#">مفضلاتي</a>
+      <a href="#">قسم خاص</a>
+    </div>
+  </aside>
+
+  <div class="content-wrapper" id="content">
+    <header>
+      <div class="logo">MyTube</div>
+      <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+    </header>
+    
+    
+
+    <div class="main">
+      <div class="section-title">الفيديوهات المقترحة</div>
+      <div class="videos">
+        <div class="card" onclick="openVideo('https://d.top4top.io/m_3391kmc910.mp4')">
+          <div class="thumbnail" style="background-image: url('https://i.ibb.co/SwNt7cCB/1000067356.jpg');"></div>
+          <div class="info">
+            <h3>عنوان الفيديو 1</h3>
+            <p>2K مشاهدة • القسم 3</p>
+          </div>
+        </div>
+        <div class="card" onclick="openVideo('https://h.top4top.io/m_3391zfvuc0.mp4')">
+          <div class="thumbnail" style="background-image: url('https://i.ibb.co/mrr4DZLK/1000067355.jpg');"></div>
+          <div class="info">
+            <h3>عنوان الفيديو 2</h3>
+            <p>4K مشاهدة • القسم 3</p>
+          </div>
+        </div>
+        <div class="card" onclick="openVideo('https://video.twimg.com/amplify_video/1911101377129963520/vid/avc1/1080x1906/onJ8v30C3-otjzcs.mp4?tag=16')">
+          <div class="thumbnail" style="background-image: url('https://i.ibb.co/TxKZwZB3/1000067522.jpg');"></div>
+          <div class="info">
+            <h3>عنوان الفيديو 3</h3>
+            <p>6K مشاهدة • القسم 3</p>
+          </div>
+        </div>
+        <div class="card" onclick="openVideo('https://d.top4top.io/m_3391kmc910.mp4')">
+  <video class="thumbnail" src="https://d.top4top.io/m_3391kmc910.mp4" muted autoplay loop playsinline></video>
+  <div class="info">
+    <h3>عنوان الفيديو</h3>
+    <p>القسم 3 • 2K مشاهدة</p>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+</div>
+<div class="section-title">اكثر شهره</div>
+      <div class="card" onclick="openVideo('https://video.twimg.com/amplify_video/1911101377129963520/vid/avc1/1080x1906/onJ8v30C3-otjzcs.mp4?tag=16')">
+          <div class="thumbnail" style="background-image: url('https://i.ibb.co/TxKZwZB3/1000067522.jpg');"></div>
+          <div class="info">
+            <h3>عنوان الفيديو 3</h3>
+            <p>6K مشاهدة • القسم 3</p>
+          </div>
+        </div>
+              <div class="card" onclick="openVideo('https://video.twimg.com/amplify_video/1911101377129963520/vid/avc1/1080x1906/onJ8v30C3-otjzcs.mp4?tag=16')">
+          <div class="thumbnail" style="background-image: url('https://i.ibb.co/TxKZwZB3/1000067522.jpg');"></div>
+          <div class="info">
+            <h3>عنوان الفيديو 3</h3>
+            <p>6K مشاهدة • القسم 3</p>
+          </div>
+        </div>
+            <div class="card" onclick="openVideo('https://video.twimg.com/ext_tw_video/1911484867977613312/pu/vid/avc1/720x1008/AyFIp262ftxT37CT.mp4?tag=12')">
+          <div class="thumbnail" style="background-image: url('https://i.ibb.co/MkBsXdB2/1000067628.jpg');"></div>
+          <div class="info">
+            <h3>جبت ولد سوري عمره 20</h3>
+            <p>X</p>
+          </div>
+        </div>
+              <div class="card" onclick="openVideo('https://video.twimg.com/ext_tw_video/1911483374104961024/pu/vid/avc1/720x1184/gWaXq0LEaqmANe6_.mp4?tag=12')">
+          <div class="thumbnail" style="background-image: url('https://i.ibb.co/ksDP6dz8/1000067626.jpg');"></div>
+          <div class="info">
+            <h3>سهره مع الخال</h3>
+            <p>X</p>
+          </div>
+       </div>
+       
+       
+       
+       
+       
+       
+       
+   
+      <div class="section-title">اجنبي</div>
+      <div class="videos">
+        <div class="card" onclick="openVideo('https://video.twimg.com/amplify_video/1911823303720808448/vid/avc1/1280x720/vOdOKxDPm15aQPoE.mp4?tag=14')">
+          <div class="thumbnail" style="background-image: url('https://i.ibb.co/bgrjBWHG/1000067550.jpg');"></div>
+          <div class="info">
+            <h3>Short clip for my friend</h3>
+            <p>X</p>
+          </div>
+        </div>
+        <div class="card" onclick="openVideo('https://video.twimg.com/amplify_video/1910759784866783232/vid/avc1/1080x1920/ykycjJDoYlK5lAA7.mp4?tag=16')">
+          <div class="thumbnail" style="background-image: url('https://i.ibb.co/PGctJrM6/1000067639.jpg');"></div>
+          <div class="info">
+            <h3>My friend is trying to trick me into thinking he has a long penis</h3>
+            <p>X</p>
+          </div>
+        </div>
+        <div class="card" onclick="openVideo('https://video.twimg.com/ext_tw_video/1908165876852936704/pu/vid/avc1/1920x1080/RfeqYB9_3zRhhIPQ.mp4?tag=14')">
+          <div class="thumbnail" style="background-image: url('https://i.ibb.co/ZRsL3Rcm/1000067641.jpg');"></div>
+          <div class="info">
+            <h3>My rags are gold</h3>
+            <p>X</p>
+          </div>
+         </div>
+         
+         
+         
+         
+         
+             <div class="section-title">عربي مترجم ♀️</div>
+      <div class="videos">
+        <div class="card" onclick="openVideo('https://video.twimg.com/amplify_video/1911766758454620160/vid/avc1/1080x1080/cQhHFB5c-N6bOu8b.mp4?tag=16')">
+          <div class="thumbnail" style="background-image: url('https://i.ibb.co/N6TpcQQg/1000067644.jpg');"></div>
+          <div class="info">
+            <h3>امارس الجنس مع عامل التنضيف ممتع</h3>
+            <p>X</p>
+          </div>
+        </div>
+        <div class="card" onclick="openVideo('https://video.twimg.com/amplify_video/1908281601407979520/vid/avc1/720x720/8GG5kxfpa1BXMp61.mp4?tag=14')">
+          <div class="thumbnail" style="background-image: url('https://i.ibb.co/Y73GHyrK/1000067647.jpg');"></div>
+          <div class="info">
+            <h3>ماما مع جارنا الجديد بعد ما ادخلته بيتنا واعطته حق الجيرة للامانة انا كنت معهم عشان مايصير شي كبير بينهم</h3>
+            <p>X</p>
+          </div>
+        </div>
+        <div class="card" onclick="openVideo('https://video.twimg.com/amplify_video/1898749332297277440/vid/avc1/1080x1080/JWd9MSiWMRlFndCU.mp4?tag=16')">
+          <div class="thumbnail" style="background-image: url('https://i.ibb.co/cXF5ZGSd/1000067649.jpg');"></div>
+          <div class="info">
+            <h3>سكاي بلو</h3>
+            <p>X</p>
+          </div>
+         </div>
+  
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+
+    function toggleSidebar() {
+      sidebar.classList.toggle('show');
+    }
+
+    document.addEventListener('click', function(e) {
+      const isClickInside = sidebar.contains(e.target) || e.target.classList.contains('menu-btn');
+      if (!isClickInside) {
+        sidebar.classList.remove('show');
+      }
+    });
+
+    function openVideo(url) {
+      window.location.href = `play11.html?video=${encodeURIComponent(url)}`;
+    }
+  </script>
+
+</body>
+</html>

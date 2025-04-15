@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>تشغيل الفيديو</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background-color: #0f0f0f;
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+      direction: rtl;
+    }
+
+    header {
+      background-color: #181818;
+      padding: 10px 20px;
+      font-size: 22px;
+      font-weight: bold;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      right: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    .container {
+      padding: 90px 20px 30px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .video-player {
+      background-color: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      margin-bottom: 20px;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+      outline: none;
+    }
+
+    .video-info {
+      background-color: #1b1b1b;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .video-info h2 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .video-info p {
+      color: #bbb;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .video-info h2 {
+        font-size: 18px;
+      }
+
+      .video-info p {
+        font-size: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>تشغيل الفيديو</header>
+
+  <div class="container">
+    <div class="video-player">
+      <video controls autoplay id="mainVideo">
+        <source src="" type="video/mp4">
+        المتصفح لا يدعم تشغيل الفيديو.
+      </video>
+    </div>
+
+    <div class="video-info">
+      <h2>خلاص تجليخ تراك قروشتنا</h2>
+      <p>ههههههه تابع بس</p>
+    </div>
+  </div>
+
+  <script>
+    // قراءة رابط الفيديو من الرابط
+    const urlParams = new URLSearchParams(window.location.search);
+    const videoUrl = urlParams.get('video');
+    const video = document.getElementById('mainVideo');
+    if (videoUrl) {
+      video.src = videoUrl;
+    }
+  </script>
+
+</body>
+</html>
